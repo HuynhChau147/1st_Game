@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Jump();
         }
+        // Debug.Log("Test);
         // Debug.Log(OnGround);
         // Debug.Log(verticalMove);
         // Debug.Log(animator.GetBool("Is Jump"));
