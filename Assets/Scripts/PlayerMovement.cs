@@ -13,13 +13,12 @@ public class PlayerMovement : MonoBehaviour
     private bool canDash = true;
     private bool isDashing;
     private float dashingTime = 0.2f;
-    private float dashingCooldown = 1f;
+    private float dashingCooldown = 2f;
 
     // SerializeField to custom on Unity Editor
-    [SerializeField] private float MoveSpeed;
-    // [SerializeField] 
-    private float JumpForce = 3f;
-    [SerializeField] private float dashingPower;
+    private float MoveSpeed = 10f;
+    [SerializeField] private float JumpForce;
+    private float dashingPower = 2f;
     [SerializeField] public Animator animator;
     [SerializeField] private TrailRenderer trailRenderer;
 
@@ -39,21 +38,30 @@ public class PlayerMovement : MonoBehaviour
         horizontalMove = Input.GetAxisRaw("Horizontal");
         verticalMove = Input.GetAxisRaw("Jump");
         animator.SetFloat("Move Speed",Mathf.Abs((horizontalMove)));
-        Move(horizontalMove,MoveSpeed,m_FacingRight);
-        if(Input.GetButtonDown("Jump") && OnGround)
-        {
-            Jump();
-        }
+        
         // Debug.Log("Test);
         // Debug.Log(OnGround);
         // Debug.Log(verticalMove);
         // Debug.Log(animator.GetBool("Is Jump"));
     }
 
+    private void FixedUpdate() {
+        if(isDashing){
+            return;
+        }
+        Move();
+        if(Input.GetButtonDown("Jump") && OnGround)
+        {
+            Debug.Log("Jump");
+            Jump();
+        }
+        if(Input.GetKeyDown(KeyCode.Z) && canDash){
+            StartCoroutine(Dash());
+        }
+    }
 
     private void Jump () {
-
-         transform.Translate(0,verticalMove*JumpForce,0);
+         m_player.AddForce(new Vector2(0f,JumpForce),ForceMode2D.Impulse);
          animator.SetBool("Is Jump",true);
         //  Debug.Log(verticalMove*JumpForce);
          OnGround = false;
@@ -61,8 +69,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    private void Move (float horizontalMove,float MoveSpeed, bool m_FacingRight) {
-        transform.Translate(horizontalMove*MoveSpeed*Time.fixedDeltaTime,0,0);
+    private void Move () {
+        transform.Translate(horizontalMove*MoveSpeed*Time.deltaTime,0,0);
         if(!m_FacingRight && horizontalMove > 0){
             FlipAnimator();
         }
@@ -87,4 +95,20 @@ public class PlayerMovement : MonoBehaviour
 		this.transform.localScale = theScale;
     }
 
+    private IEnumerator Dash(){
+        canDash = false;
+        isDashing = true;
+        float  originalGravity = m_player.gravityScale;
+        m_player.gravityScale = 0f;
+        m_player.velocity = new Vector2(transform.localScale.x*dashingPower,0f);
+        trailRenderer.emitting = true;
+        yield return new WaitForSeconds(dashingTime);
+        m_player.velocity = new Vector2(0f,0f);
+        trailRenderer.emitting = false;
+        m_player.gravityScale = originalGravity;
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
+        Debug.Log(transform.localScale.x*dashingPower);
+    }
 }
