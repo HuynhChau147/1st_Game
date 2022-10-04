@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isDashing;
     private float dashingTime = 0.2f;
     private float dashingCooldown = 2f;
+    // [SerializeField] public Sprite mySprite;
 
     // SerializeField to custom on Unity Editor
     private float MoveSpeed = 10f;
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         m_player = GetComponent<Rigidbody2D>();
+        // this.GetComponent<SpriteRenderer>().sprite = mySprite;
         animator.SetBool("Is Jump", false);
     }
 

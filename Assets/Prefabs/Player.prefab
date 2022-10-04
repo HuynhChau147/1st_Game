@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 9091149140642501463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.36, y: 1.96, z: 0}
-  m_LocalScale: {x: 6.7325935, y: 7.052392, z: 6.7325935}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: -1153933839
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 72de0c64f2c6a498096698322c976a67, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e135b580b4118e04ea00572f5b848657, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,7 +106,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.33, y: 0.32}
+    oldSize: {x: 5.12, y: 2.56}
     newSize: {x: 0.33, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -114,18 +114,21 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.010333144, y: 0.039883733}
-      - {x: -0.040147744, y: 0.065049246}
-      - {x: -0.070803545, y: 0.06177032}
-      - {x: -0.06283961, y: 0.011148354}
-      - {x: -0.089860074, y: 0.009832451}
-      - {x: -0.11191806, y: -0.07085281}
-      - {x: -0.079492025, y: -0.16373768}
-      - {x: -0.013342578, y: -0.14799945}
-      - {x: 0.07444274, y: -0.16}
-      - {x: 0.07628772, y: -0.13257992}
-      - {x: 0.08072818, y: -0.10154534}
-      - {x: 0.0715904, y: 0.045783896}
+    - - {x: 0.2305274, y: 0.23729171}
+      - {x: 0.12513216, y: 0.25516462}
+      - {x: 0.08182576, y: 0.3018582}
+      - {x: 0.072694875, y: 0.25552315}
+      - {x: -0.0054403394, y: 0.27666146}
+      - {x: -0.18313468, y: 0.13182491}
+      - {x: -0.5782887, y: -0.049324743}
+      - {x: -0.4095387, y: -0.18526575}
+      - {x: -0.5801622, y: -0.32740003}
+      - {x: -0.14080536, y: -1.2148759}
+      - {x: 0.2987108, y: -1.21616}
+      - {x: 0.4361949, y: -0.7877728}
+      - {x: 0.44933558, y: -0.50124604}
+      - {x: 0.51154053, y: -0.2060005}
+      - {x: 0.34423777, y: 0.21800855}
 --- !u!114 &1317068873212042936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,8 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0599bd21453fdfc458ee6c4fd1da6d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mySprite: {fileID: 21300000, guid: e135b580b4118e04ea00572f5b848657, type: 3}
   JumpForce: 5
-  animator: {fileID: 366773840}
   trailRenderer: {fileID: 1786418687}
 --- !u!50 &366773845
 Rigidbody2D:
