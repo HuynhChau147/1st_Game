@@ -12,16 +12,15 @@ public class PlayerMovement : MonoBehaviour
     private bool OnGround;
     private bool canDash = true;
     private bool isDashing;
-    private float dashingTime = 0.2f;
+    private float dashingTime = 0.5f;
     private float dashingCooldown = 2f;
     // [SerializeField] public Sprite mySprite;
 
     // SerializeField to custom on Unity Editor
     private float MoveSpeed = 10f;
     [SerializeField] private float JumpForce;
-    private float dashingPower = 2f;
+    [SerializeField] private float dashingPower = 12f;
     [SerializeField] public Animator animator;
-    [SerializeField] private TrailRenderer trailRenderer;
 
     Rigidbody2D m_player;
     
@@ -30,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         m_player = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         // this.GetComponent<SpriteRenderer>().sprite = mySprite;
         animator.SetBool("Is Jump", false);
     }
@@ -46,6 +46,9 @@ public class PlayerMovement : MonoBehaviour
         // Debug.Log(verticalMove);
         // Debug.Log(animator.GetBool("Is Jump"));
     }
+
+    //Animation State
+    const string PLAYER_DASHING = "Player_Dashing";
 
     private void FixedUpdate() {
         if(isDashing){
@@ -102,15 +105,15 @@ public class PlayerMovement : MonoBehaviour
         isDashing = true;
         float  originalGravity = m_player.gravityScale;
         m_player.gravityScale = 0f;
-        m_player.velocity = new Vector2(transform.localScale.x*dashingPower,0f);
-        trailRenderer.emitting = true;
+        m_player.velocity = new Vector2(transform.localScale.x *dashingPower,0f);
+        animator.SetBool("Is Dash",isDashing);
         yield return new WaitForSeconds(dashingTime);
         m_player.velocity = new Vector2(0f,0f);
-        trailRenderer.emitting = false;
         m_player.gravityScale = originalGravity;
         isDashing = false;
+        animator.SetBool("Is Dash",isDashing);
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
-        Debug.Log(transform.localScale.x*dashingPower);
+        Debug.Log(m_player.transform.localPosition.x);
     }
 }

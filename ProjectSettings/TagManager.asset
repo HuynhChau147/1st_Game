@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Frog_Zone
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - Water
   - UI
   - BackGround
-  - 
-  - 
+  - Floor
+  - Ground
   - 
   - 
   - 
@@ -43,6 +44,9 @@ TagManager:
     uniqueID: 1930929845
     locked: 0
   - name: Ground
+    uniqueID: 1337562789
+    locked: 0
+  - name: Floor
     uniqueID: 2658061517
     locked: 0
   - name: Player
