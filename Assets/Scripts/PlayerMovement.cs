@@ -48,7 +48,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //Animation State
-    const string PLAYER_DASHING = "Player_Dashing";
 
     private void FixedUpdate() {
         if(isDashing){
