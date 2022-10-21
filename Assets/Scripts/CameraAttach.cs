@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraAttach : MonoBehaviour
 {
-    private float SpeedOfCamera = 2f;
+    private float SpeedOfCamera = 3f;
     [SerializeField] private Transform target;
 
     // Start is called before the first frame update
