@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Frog_Zone
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -51,6 +52,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3141033457
+    locked: 0
+  - name: UI
+    uniqueID: 3363826313
     locked: 0
   - name: Default
     uniqueID: 0

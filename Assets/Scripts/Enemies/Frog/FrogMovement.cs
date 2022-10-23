@@ -9,6 +9,8 @@ public class FrogMovement : MonoBehaviour
     private bool OnGround;
     private float dir = 1;
     private bool m_FacingRight = true;
+    private Health player_Health;
+    private float dame = 1;
 
     [SerializeField] Rigidbody2D m_player;
     Rigidbody2D m_frog;
@@ -19,6 +21,7 @@ public class FrogMovement : MonoBehaviour
     {
         m_frog = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        player_Health = GetComponent<Health>();
     }
 
     // Update is called once per frame
@@ -33,6 +36,10 @@ public class FrogMovement : MonoBehaviour
         if(col.collider.tag == "Ground"){
                 OnGround = true;
                 animator.SetBool("Is Jump",false);
+        }
+        if(col.collider.tag == "Player" ){
+            m_player.GetComponent<Health>().TakeDame(dame); 
+            Debug.Log("Took Dame");
         }
     }
 
@@ -52,9 +59,7 @@ public class FrogMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D colTri) {
         if(colTri.CompareTag("Frog_Zone")){
             dir = -dir;
-            Debug.Log("Frog doi dau");
         }
-        Debug.Log(dir);
     }
 
     private void FlipAnimator () {
