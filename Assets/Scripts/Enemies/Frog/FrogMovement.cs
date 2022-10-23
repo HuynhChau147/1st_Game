@@ -11,6 +11,8 @@ public class FrogMovement : MonoBehaviour
     private bool m_FacingRight = true;
     private Health player_Health;
     private float dame = 1;
+    public float jumpCooldown = 1; // 1sec for e.g.
+    private float currentCooldown;
 
     [SerializeField] Rigidbody2D m_player;
     Rigidbody2D m_frog;
@@ -22,14 +24,22 @@ public class FrogMovement : MonoBehaviour
         m_frog = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player_Health = GetComponent<Health>();
+        currentCooldown = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(OnGround == true){
-            Jumping();
+        if (currentCooldown > 0) // If jump not in cooldown
+        {
+            currentCooldown = jumpCooldown; // Set current cooldown time to jumpCooldown
+            if(OnGround == true)
+            {
+                Jumping();
+            }
         }
+        else currentCooldown -= Time.deltaTime; // Reduce cooldown over time
+        Debug.Log(currentCooldown);
     }
 
     private void OnCollisionEnter2D(Collision2D col) {

@@ -29,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 slopeNormalPerp;
 
     // SerializeField to custom on Unity Editor
+    [SerializeField] public AudioSource audioSrc;
+    [SerializeField] public AudioClip jumpSound;
     [SerializeField] private PhysicsMaterial2D noFriction;
     [SerializeField] private PhysicsMaterial2D withFriction;
     [SerializeField] private float slopeForce;
@@ -132,6 +134,10 @@ public class PlayerMovement : MonoBehaviour
          animator.SetBool("Is Jump",true);
         //  Debug.Log(verticalMove*JumpForce);
          OnGround = false;
+         if(audioSrc && jumpSound)
+         {
+            audioSrc.PlayOneShot(jumpSound);
+         }
         // transform.Translate(horizontalMove*MoveSpeed*Time.fixedDeltaTime,verticalMove*JumpForce*Time.fixedDeltaTime,0);
     }
 
