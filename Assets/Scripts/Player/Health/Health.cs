@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
     public float currentHealth{ get; private set; }
     private Animator anim;
     private bool dead;
+    public Rigidbody2D m_player;
 
     [SerializeField] private float startingHealth;
 
@@ -21,6 +22,9 @@ public class Health : MonoBehaviour
         if(currentHealth > 0){
             // Take dame
             anim.SetTrigger("hurt");
+            // m_player.OnBecameInvisible() {
+                
+            // }
         }
 
         else{

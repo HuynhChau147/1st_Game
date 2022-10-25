@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     // Attribute of player
-    private float horizontalMove;           
+    private float horizontalMove;
     private float verticalMove;
     private float dashingTime = 0.5f;
     private float dashingCooldown = 2f;
@@ -21,14 +21,19 @@ public class PlayerMovement : MonoBehaviour
     private bool canDash = true;
     private bool isDashing;
     private bool isOnSlope;
-    
+    private bool invincible = false;
+    public bool KnockFromRight;
+    public float KBFroce;
+    public float KBCounter;
+    public float KBTotalTime;
+
     private Vector2 colliderSize;
     private Vector2 tempVelocity;
     private CapsuleCollider2D CapCol2D;
-    
     private Vector2 slopeNormalPerp;
+    
 
-    // SerializeField to custom on Unity Editor
+    // Private SerializeField to custom on Unity Editor
     [SerializeField] public AudioSource audioSrc;
     [SerializeField] public AudioClip jumpSound;
     [SerializeField] private PhysicsMaterial2D noFriction;
@@ -41,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public Animator animator;
 
     Rigidbody2D m_player;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -59,8 +64,8 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalMove = Input.GetAxisRaw("Horizontal");
         verticalMove = Input.GetAxisRaw("Jump");
-        animator.SetFloat("Move Speed",Mathf.Abs((horizontalMove)));
-        
+        animator.SetFloat("Move Speed", Mathf.Abs((horizontalMove)));
+
         // Debug.Log("Test);
         // Debug.Log(OnGround);
         // Debug.Log(verticalMove);
@@ -69,56 +74,84 @@ public class PlayerMovement : MonoBehaviour
 
     //Animation State
 
-    private void FixedUpdate() {
-        if(isDashing){
+    private void FixedUpdate()
+    {
+        if (isDashing)
+        {
             return;
         }
-        Move();
-        if(Input.GetButtonDown("Jump") && OnGround)
+        if (KBCounter <= 0)
+        {
+            Move();
+        }
+        else
+        {
+            if(KnockFromRight == true)
+            {
+                // m_player.AddForce(new Vector2(-KBFroce,KBFroce));
+                m_player.velocity = new Vector2 (-KBFroce,KBFroce);
+            }
+            if(KnockFromRight == false)
+            {
+                // m_player.AddForce(new Vector2(KBFroce,KBFroce));
+                m_player.velocity = new Vector2 (KBFroce,KBFroce);
+            }
+            KBCounter -= Time.deltaTime;
+        }
+        if (Input.GetButtonDown("Jump") && OnGround)
         {
             Debug.Log("Jump");
             Jump();
         }
-        if(Input.GetKeyDown(KeyCode.Z) && canDash){
+        if (Input.GetKeyDown(KeyCode.Z) && canDash)
+        {
             StartCoroutine(Dash());
         }
         SlopeCheck();
     }
 
-    private void SlopeCheck(){
+    private void SlopeCheck()
+    {
         Vector2 checkPos = transform.position - new Vector3(0.0f, colliderSize.y / 2);
         SlopeCheckVertical(checkPos);
         SlopeCheckHorizontal(checkPos);
     }
 
-    private void SlopeCheckHorizontal(Vector2 checkPos){
-        RaycastHit2D slopeHitFront = Physics2D.Raycast(checkPos, transform.right, slopeCheckDistance,whatIsGround);
-        RaycastHit2D slopeHitBack = Physics2D.Raycast(checkPos, -transform.right, slopeCheckDistance,whatIsGround);
+    private void SlopeCheckHorizontal(Vector2 checkPos)
+    {
+        RaycastHit2D slopeHitFront = Physics2D.Raycast(checkPos, transform.right, slopeCheckDistance, whatIsGround);
+        RaycastHit2D slopeHitBack = Physics2D.Raycast(checkPos, -transform.right, slopeCheckDistance, whatIsGround);
 
-        if(slopeHitFront){
+        if (slopeHitFront)
+        {
             Debug.Log("slope hit front");
             isOnSlope = true;
             slopeSideAngle = Vector2.Angle(slopeHitFront.normal, Vector2.up);
         }
-        else if(slopeHitBack){
+        else if (slopeHitBack)
+        {
             Debug.Log("slope hit back");
             isOnSlope = true;
             slopeSideAngle = Vector2.Angle(slopeHitBack.normal, Vector2.up);
         }
-        else{
+        else
+        {
             slopeSideAngle = 0.0f;
             isOnSlope = false;
         }
     }
 
-    private void SlopeCheckVertical(Vector2 checkPos){
-        RaycastHit2D hit2D = Physics2D.Raycast(checkPos, Vector2.down,slopeCheckDistance,whatIsGround);
-        
+    private void SlopeCheckVertical(Vector2 checkPos)
+    {
+        RaycastHit2D hit2D = Physics2D.Raycast(checkPos, Vector2.down, slopeCheckDistance, whatIsGround);
 
-        if(hit2D){
+
+        if (hit2D)
+        {
             slopeNormalPerp = Vector2.Perpendicular(hit2D.normal).normalized;
             slopeDownAngle = Vector2.Angle(hit2D.normal, Vector2.up);
-            if(slopeDownAngle != slopeDownAngleOld){
+            if (slopeDownAngle != slopeDownAngleOld)
+            {
                 isOnSlope = true;
                 Debug.Log("On Slope");
 
@@ -129,66 +162,89 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Jump () {
-         m_player.AddForce(new Vector2(0f,JumpForce),ForceMode2D.Impulse);
-         animator.SetBool("Is Jump",true);
+    private void Jump()
+    {
+        m_player.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
+        animator.SetBool("Is Jump", true);
         //  Debug.Log(verticalMove*JumpForce);
-         OnGround = false;
-         if(audioSrc && jumpSound)
-         {
+        OnGround = false;
+        if (audioSrc && jumpSound)
+        {
             audioSrc.PlayOneShot(jumpSound);
-         }
+        }
         // transform.Translate(horizontalMove*MoveSpeed*Time.fixedDeltaTime,verticalMove*JumpForce*Time.fixedDeltaTime,0);
     }
 
 
-    private void Move () {
-        transform.Translate(horizontalMove*MoveSpeed*Time.deltaTime,0,0);
-        if(!m_FacingRight && horizontalMove > 0){
+    private void Move()
+    {
+        transform.Translate(horizontalMove * MoveSpeed * Time.deltaTime, 0, 0);
+        if (!m_FacingRight && horizontalMove > 0)
+        {
             FlipAnimator();
         }
-        else if (m_FacingRight && horizontalMove <0){
+        else if (m_FacingRight && horizontalMove < 0)
+        {
             FlipAnimator();
         }
-        if(horizontalMove != 0){
+        if (horizontalMove != 0)
+        {
             m_player.sharedMaterial = noFriction;
         }
-        else{
+        else
+        {
             m_player.sharedMaterial = withFriction;
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D col) {
-        if(col.collider.tag == "Ground"){
-                OnGround = true;
-                animator.SetBool("Is Jump", false);
-                Debug.Log("On Ground");
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.collider.tag == "Ground")
+        {
+            OnGround = true;
+            animator.SetBool("Is Jump", false);
+            Debug.Log("On Ground");
         }
     }
 
-    private void FlipAnimator () {
+    private void FlipAnimator()
+    {
         m_FacingRight = !m_FacingRight;
 
-		Vector3 theScale = this.transform.localScale;
-		theScale.x *= -1;
-		this.transform.localScale = theScale;
+        Vector3 theScale = this.transform.localScale;
+        theScale.x *= -1;
+        this.transform.localScale = theScale;
     }
 
-    private IEnumerator Dash(){
+    private IEnumerator Dash()
+    {
         canDash = false;
         isDashing = true;
-        float  originalGravity = m_player.gravityScale;
+        float originalGravity = m_player.gravityScale;
         m_player.gravityScale = 0f;
-        m_player.velocity = new Vector2(transform.localScale.x *dashingPower,0f);
-        animator.SetBool("Is Dash",isDashing);
+        m_player.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        animator.SetBool("Is Dash", isDashing);
         yield return new WaitForSeconds(dashingTime);
-        m_player.velocity = new Vector2(0f,0f);
+        m_player.velocity = new Vector2(0f, 0f);
         m_player.gravityScale = originalGravity;
         isDashing = false;
-        animator.SetBool("Is Dash",isDashing);
+        animator.SetBool("Is Dash", isDashing);
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
         Debug.Log(m_player.transform.localPosition.x);
     }
 
+    public void Player_Invincible()
+    {
+        if (!invincible)
+        {
+            invincible = true;
+            Invoke("resetInvulnerability", 3);
+        }
+    }
+
+    private void resetInvulnerability()
+    {
+        invincible = false;
+    }
 }

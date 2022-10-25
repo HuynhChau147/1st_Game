@@ -11,9 +11,9 @@ public class FrogMovement : MonoBehaviour
     private bool m_FacingRight = true;
     private Health player_Health;
     private float dame = 1;
-    public float jumpCooldown = 1; // 1sec for e.g.
+    public float jumpCooldown = 1;
     private float currentCooldown;
-
+    public PolygonCollider2D col2D;
     [SerializeField] Rigidbody2D m_player;
     Rigidbody2D m_frog;
     [SerializeField] public Animator animator;
@@ -24,17 +24,16 @@ public class FrogMovement : MonoBehaviour
         m_frog = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player_Health = GetComponent<Health>();
-        currentCooldown = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (currentCooldown > 0) // If jump not in cooldown
+        if (currentCooldown < 0) // If jump not in cooldown
         {
-            currentCooldown = jumpCooldown; // Set current cooldown time to jumpCooldown
             if(OnGround == true)
             {
+                currentCooldown = jumpCooldown; // Set current cooldown time to jumpCooldown
                 Jumping();
             }
         }
@@ -43,12 +42,30 @@ public class FrogMovement : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D col) {
-        if(col.collider.tag == "Ground"){
+        
+        if(col.collider.tag == "Ground")
+        {
                 OnGround = true;
                 animator.SetBool("Is Jump",false);
         }
-        if(col.collider.tag == "Player" ){
-            m_player.GetComponent<Health>().TakeDame(dame); 
+        if(col.collider.tag == "Player" )
+        {
+            m_player.GetComponent<Health>().TakeDame(0); 
+            m_player.GetComponent<PlayerMovement>().Player_Invincible();
+            m_player.GetComponent<PlayerMovement>().KBCounter = m_player.GetComponent<PlayerMovement>().KBTotalTime;
+            if(col.transform.position.x <= transform.position.x)
+            {
+                m_player.GetComponent<PlayerMovement>().KnockFromRight = true;
+            }
+            if(col.transform.position.x > transform.position.x)
+            {
+                m_player.GetComponent<PlayerMovement>().KnockFromRight = false;
+            }
+            // this.col2D.enabled = false;
+            // // m_frog.isKinematic = true;
+            // yield return new WaitForSeconds(0.5f);
+            // this.col2D.enabled = true;
+            // // m_frog.isKinematic = false;
             Debug.Log("Took Dame");
         }
     }
