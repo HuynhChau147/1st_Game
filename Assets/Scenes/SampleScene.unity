@@ -412,7 +412,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1337562789
-  m_SortingLayer: -4
+  m_SortingLayer: -5
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 4.75, y: 4.9, z: 0}
@@ -10365,6 +10365,11 @@ PolygonCollider2D:
   m_CorrespondingSourceObject: {fileID: 1259405277784784311, guid: 0083c127b22ce2a45bc0174d60061eeb, type: 3}
   m_PrefabInstance: {fileID: 1259405276916338808}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &920004990 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5464210481529582538, guid: c9e3193d8b5244242b5c0f8e96ec9598, type: 3}
+  m_PrefabInstance: {fileID: 9091149140469257501}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1248863607
 GameObject:
   m_ObjectHideFlags: 0
@@ -14401,6 +14406,39 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &1731830395 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1259405277784784308, guid: 0083c127b22ce2a45bc0174d60061eeb, type: 3}
+  m_PrefabInstance: {fileID: 1259405276916338808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1731830398 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 1259405277784784310, guid: 0083c127b22ce2a45bc0174d60061eeb, type: 3}
+  m_PrefabInstance: {fileID: 1259405276916338808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1731830399 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1259405277784784296, guid: 0083c127b22ce2a45bc0174d60061eeb, type: 3}
+  m_PrefabInstance: {fileID: 1259405276916338808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1731830401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731830395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dca988eb8cf7cbd419ee4f83f4321099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  m_player: {fileID: 1862702704}
+  m_Enemy: {fileID: 1731830398}
+  enemy: {fileID: 1731830395}
+  flashTime: 0.2
+  spriteRender: {fileID: 1731830399}
 --- !u!1 &1775012229
 GameObject:
   m_ObjectHideFlags: 0
@@ -14457,7 +14495,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1930929845
-  m_SortingLayer: -5
+  m_SortingLayer: -6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8e160a2a620644cd6afef9119dad1093, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -14641,7 +14679,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2007179242}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2e05525ffb6289e4ca535076c56da9c4, type: 3}
@@ -14752,6 +14790,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1259405277784784296, guid: 0083c127b22ce2a45bc0174d60061eeb, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1259405277784784296, guid: 0083c127b22ce2a45bc0174d60061eeb, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1259405277784784296, guid: 0083c127b22ce2a45bc0174d60061eeb, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1259405277784784296, guid: 0083c127b22ce2a45bc0174d60061eeb, type: 3}
+      propertyPath: m_SortingLayer
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1259405277784784296, guid: 0083c127b22ce2a45bc0174d60061eeb, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2112245131
+      objectReference: {fileID: 0}
     - target: {fileID: 1259405277784784297, guid: 0083c127b22ce2a45bc0174d60061eeb, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -14799,6 +14857,10 @@ PrefabInstance:
     - target: {fileID: 1259405277784784308, guid: 0083c127b22ce2a45bc0174d60061eeb, type: 3}
       propertyPath: m_Name
       value: Frog
+      objectReference: {fileID: 0}
+    - target: {fileID: 1259405277784784308, guid: 0083c127b22ce2a45bc0174d60061eeb, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1259405277784784308, guid: 0083c127b22ce2a45bc0174d60061eeb, type: 3}
       propertyPath: m_TagString
@@ -15071,3 +15133,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_player: {fileID: 0}
   startingHealth: 3
+--- !u!114 &9091149140469257504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9091149140469257502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40aac973ef8864742b735e4e4597dbaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 9091149140469257506}
+  attackPoint: {fileID: 920004990}
+  attackRange: 0.96
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!95 &9091149140469257506 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 366773840, guid: c9e3193d8b5244242b5c0f8e96ec9598, type: 3}
+  m_PrefabInstance: {fileID: 9091149140469257501}
+  m_PrefabAsset: {fileID: 0}

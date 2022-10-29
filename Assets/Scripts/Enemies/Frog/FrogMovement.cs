@@ -38,7 +38,6 @@ public class FrogMovement : MonoBehaviour
             }
         }
         else currentCooldown -= Time.deltaTime; // Reduce cooldown over time
-        Debug.Log(currentCooldown);
     }
 
     private void OnCollisionEnter2D(Collision2D col) {
