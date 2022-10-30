@@ -23,9 +23,9 @@ public class Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+
     }
 
     public void EnemyTakeDame(int damage)
@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
 
         if(currentHealth > 0)
         {
-            FlashRed();
+            Flash();
         }
 
         if(currentHealth <= 0 )
@@ -49,15 +49,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void FlashRed()
+    private void Flash()
     {
         spriteRender.color = Color.red;
         Invoke("ResetColor", flashTime);
     }
+
     void ResetColor()
     {
         spriteRender.color = origionalColor;
     }
-
 
 }

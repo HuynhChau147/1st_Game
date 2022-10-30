@@ -7,20 +7,20 @@ public class PlayerCombat : MonoBehaviour
     public Animator anim;
     public Transform attackPoint;
     public float attackRange = 0.5f;
+    public float attackRate = 2f;
+    float nextAttactkTime = 0f;
     public LayerMask enemyLayers;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.C))
+        if(Time.time >= nextAttactkTime)
         {
-            Attack();
+            if(Input.GetKeyDown(KeyCode.C))
+            {
+                Attack();
+                nextAttactkTime = Time.time + 1f/ attackRate;
+            }
         }
     }
 
