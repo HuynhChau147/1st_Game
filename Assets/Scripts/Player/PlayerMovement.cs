@@ -12,9 +12,10 @@ public class PlayerMovement : MonoBehaviour
     private float slopeDownAngle;
     private float slopeDownAngleOld;
     private float slopeSideAngle;
-    private float MoveSpeed = 10f;
+    private float MoveSpeed = 12f;
     private float SlopeAngle;
 
+    private bool Dashing = false;
     private bool Jumping = false;
     private bool m_FacingRight = true;
     private bool OnGround;
@@ -65,11 +66,14 @@ public class PlayerMovement : MonoBehaviour
         horizontalMove = Input.GetAxisRaw("Horizontal");
         verticalMove = Input.GetAxisRaw("Jump");
         animator.SetFloat("Move Speed", Mathf.Abs((horizontalMove)));
-
-        // Debug.Log("Test);
-        // Debug.Log(OnGround);
-        // Debug.Log(verticalMove);
-        // Debug.Log(animator.GetBool("Is Jump"));
+        if (Input.GetButtonDown("Jump") && OnGround)
+        {
+            Jumping = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Z) && canDash)
+        {
+            Dashing = true;
+        }
     }
 
     //Animation State
@@ -88,22 +92,20 @@ public class PlayerMovement : MonoBehaviour
         {
             if(KnockFromRight == true)
             {
-                // m_player.AddForce(new Vector2(-KBFroce,KBFroce));
                 m_player.velocity = new Vector2 (-KBFroce,KBFroce);
             }
             if(KnockFromRight == false)
             {
-                // m_player.AddForce(new Vector2(KBFroce,KBFroce));
                 m_player.velocity = new Vector2 (KBFroce,KBFroce);
             }
             KBCounter -= Time.deltaTime;
         }
-        if (Input.GetButtonDown("Jump") && OnGround)
+        if (Jumping == true)
         {
             Debug.Log("Jump");
             Jump();
         }
-        if (Input.GetKeyDown(KeyCode.Z) && canDash)
+        if (Dashing == true && canDash)
         {
             StartCoroutine(Dash());
         }
@@ -168,6 +170,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("Is Jump", true);
         //  Debug.Log(verticalMove*JumpForce);
         OnGround = false;
+        Jumping = false;
         if (audioSrc && jumpSound)
         {
             audioSrc.PlayOneShot(jumpSound);
@@ -228,6 +231,7 @@ public class PlayerMovement : MonoBehaviour
         m_player.velocity = new Vector2(0f, 0f);
         m_player.gravityScale = originalGravity;
         isDashing = false;
+        Dashing = false;
         animator.SetBool("Is Dash", isDashing);
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;

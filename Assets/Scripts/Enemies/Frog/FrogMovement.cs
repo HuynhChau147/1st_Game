@@ -65,7 +65,7 @@ public class FrogMovement : MonoBehaviour
 
         if(col.collider.tag == "Player" )
         {
-            m_player.GetComponent<Health>().TakeDame(0); 
+            m_player.GetComponent<Health>().TakeDame(1); 
             m_player.GetComponent<PlayerMovement>().Player_Invincible();
             m_player.GetComponent<PlayerMovement>().KBCounter = m_player.GetComponent<PlayerMovement>().KBTotalTime;
             if(col.transform.position.x <= transform.position.x)
