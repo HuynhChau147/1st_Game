@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
     private Animator anim;
     private bool dead;
     public Rigidbody2D m_player;
-
+    [SerializeField] private Behaviour[] components;
     [SerializeField] private float startingHealth;
 
     private void Awake() {
@@ -22,9 +22,6 @@ public class Health : MonoBehaviour
         if(currentHealth > 0){
             // Take dame
             anim.SetTrigger("hurt");
-            // m_player.OnBecameInvisible() {
-                
-            // }
         }
 
         else{
@@ -41,5 +38,17 @@ public class Health : MonoBehaviour
     public void AddHealth(float healthValue)
     {
         currentHealth = Mathf.Clamp(currentHealth + healthValue, 0 , startingHealth);
+    }
+
+    public void Respawn(){
+        dead = false;
+        AddHealth(startingHealth);
+        anim.ResetTrigger("die");
+        anim.Play("Player_idle");
+        
+        foreach (Behaviour component in components)
+        {
+            component.enabled = true;
+        }
     }
 }

@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Frog_Zone
   - Enemy
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Floor
   - Ground
   - Enemies
-  - 
+  - Objects
   - 
   - 
   - 
@@ -52,6 +53,9 @@ TagManager:
     locked: 0
   - name: Enemies
     uniqueID: 2182722165
+    locked: 0
+  - name: Objects
+    uniqueID: 1330334341
     locked: 0
   - name: Player
     uniqueID: 3141033457
