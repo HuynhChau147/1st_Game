@@ -37,8 +37,6 @@ public class PlayerMovement : MonoBehaviour
     // Private SerializeField to custom on Unity Editor
     [SerializeField] public AudioSource audioSrc;
     [SerializeField] public AudioClip jumpSound;
-    [SerializeField] private PhysicsMaterial2D noFriction;
-    [SerializeField] private PhysicsMaterial2D withFriction;
     [SerializeField] private float slopeForce;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private float slopeCheckDistance;
@@ -190,14 +188,6 @@ public class PlayerMovement : MonoBehaviour
         {
             FlipAnimator();
         }
-        if (horizontalMove != 0)
-        {
-            m_player.sharedMaterial = noFriction;
-        }
-        else
-        {
-            m_player.sharedMaterial = withFriction;
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -250,5 +240,10 @@ public class PlayerMovement : MonoBehaviour
     private void resetInvulnerability()
     {
         invincible = false;
+    }
+
+    public bool getJumping()
+    {
+        return Jumping;
     }
 }

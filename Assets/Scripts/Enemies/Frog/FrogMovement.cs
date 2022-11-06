@@ -13,7 +13,7 @@ public class FrogMovement : MonoBehaviour
     private float dame = 1;
     public float jumpCooldown = 1;
     private float currentCooldown;
-    public PolygonCollider2D col2D;
+    public BoxCollider2D col2D;
     [SerializeField] Rigidbody2D m_player;
     Rigidbody2D m_frog;
     [SerializeField] public Animator animator;
@@ -65,7 +65,7 @@ public class FrogMovement : MonoBehaviour
 
         if(col.collider.tag == "Player" )
         {
-            m_player.GetComponent<Health>().TakeDame(1); 
+            m_player.GetComponent<Health>().TakeDame(dame); 
             m_player.GetComponent<PlayerMovement>().Player_Invincible();
             m_player.GetComponent<PlayerMovement>().KBCounter = m_player.GetComponent<PlayerMovement>().KBTotalTime;
             if(col.transform.position.x <= transform.position.x)

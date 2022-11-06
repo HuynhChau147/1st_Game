@@ -21,6 +21,7 @@ public class Health : MonoBehaviour
 
         if(currentHealth > 0){
             // Take dame
+            anim.SetBool("Is Jump",false);
             anim.SetTrigger("hurt");
         }
 
@@ -28,6 +29,7 @@ public class Health : MonoBehaviour
             // Dead
             if(!dead)
             {
+                anim.SetBool("Is Jump",false);
                 anim.SetTrigger("die");
                 GetComponent<PlayerMovement>().enabled = false;
                 dead = true;
