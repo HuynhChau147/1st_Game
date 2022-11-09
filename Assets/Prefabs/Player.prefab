@@ -137,13 +137,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   KnockFromRight: 0
-  KBFroce: 3
+  KBFroce: 5
   KBCounter: 0
   KBTotalTime: 0.2
   audioSrc: {fileID: 0}
   jumpSound: {fileID: 8300000, guid: 4192a956d12a0c84ca98610301ace5b1, type: 3}
-  noFriction: {fileID: 6200000, guid: 18863a9ed421ea04b947686913356ff1, type: 2}
-  withFriction: {fileID: 6200000, guid: 9795d209b7b357342831d69d5b058f19, type: 2}
   slopeForce: 10
   whatIsGround:
     serializedVersion: 2
@@ -184,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1ed5de309f53b4eb2a79c92a23be20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_player: {fileID: 0}
+  m_player: {fileID: 8137995683445520469}
   components:
   - {fileID: 1317068873212042936}
   startingHealth: 3
@@ -253,7 +251,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9795d209b7b357342831d69d5b058f19, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
