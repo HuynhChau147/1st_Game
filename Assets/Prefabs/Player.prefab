@@ -205,6 +205,8 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
+  audioSrc: {fileID: 0}
+  AttackSound: {fileID: 8300000, guid: ad2b8bbcb226e5243867472836870648, type: 3}
 --- !u!114 &9091149140469257509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
   checkpointSound: {fileID: 8300000, guid: fdd369804e05df2498831124515ab6df, type: 3}
+  DeadSound: {fileID: 8300000, guid: d53048cbeb85f394b86fd3c38967d73d, type: 3}
 --- !u!70 &5984308793082765917
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

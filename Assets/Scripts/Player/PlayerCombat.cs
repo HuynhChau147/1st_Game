@@ -11,6 +11,9 @@ public class PlayerCombat : MonoBehaviour
     float nextAttactkTime = 0f;
     public LayerMask enemyLayers;
 
+    [SerializeField] public AudioSource audioSrc;
+    [SerializeField] public AudioClip AttackSound;
+
     // Update is called once per frame
     void Update()
     {
@@ -28,6 +31,7 @@ public class PlayerCombat : MonoBehaviour
     {
         anim.SetTrigger("Attack");
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        audioSrc.PlayOneShot(AttackSound);
 
         foreach(Collider2D enemy in hitEnemies)
         {

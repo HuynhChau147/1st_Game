@@ -10,6 +10,8 @@ public class Health : MonoBehaviour
     public Rigidbody2D m_player;
     [SerializeField] private Behaviour[] components;
     [SerializeField] private float startingHealth;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip DeadSound;
 
     private void Awake() {
         currentHealth = startingHealth;
@@ -32,7 +34,10 @@ public class Health : MonoBehaviour
                 anim.SetBool("Is Jump",false);
                 anim.SetTrigger("die");
                 GetComponent<PlayerMovement>().enabled = false;
+                GetComponent<CapsuleCollider2D>().enabled = false;
+                m_player.gravityScale = 0;
                 dead = true;
+                audioSource.PlayOneShot(DeadSound);
             }
         }
     }
@@ -47,6 +52,8 @@ public class Health : MonoBehaviour
         AddHealth(startingHealth);
         anim.ResetTrigger("die");
         anim.Play("Player_idle");
+        GetComponent<CapsuleCollider2D>().enabled = true;
+        m_player.gravityScale = 3;
         
         foreach (Behaviour component in components)
         {

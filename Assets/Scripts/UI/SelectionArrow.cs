@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SelectionArrow : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class SelectionArrow : MonoBehaviour
     }
 
     private void Update() {
+        // Input key to change selection
         if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             ChangeSelection(-1);
@@ -25,6 +27,13 @@ public class SelectionArrow : MonoBehaviour
         else if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             ChangeSelection(1);
+        }
+
+        // Input to interact with selection
+        if(Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            audioSrc.PlayOneShot(selectedSound);
+            Interact();
         }
     }
 
@@ -48,5 +57,12 @@ public class SelectionArrow : MonoBehaviour
 
         // Change Y pos of Arrow to each select postion
         rect.position = new Vector3(rect.position.x, options[currentPosition].position.y,0);
+    }
+
+    private void Interact()
+    {
+
+        // Access the button component on each option and call it's function
+        options[currentPosition].GetComponent<Button>().onClick.Invoke();
     }
 }
