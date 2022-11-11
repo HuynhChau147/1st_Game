@@ -12,6 +12,7 @@ public class Health : MonoBehaviour
     [SerializeField] private float startingHealth;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip DeadSound;
+    [SerializeField] private float iFrameDuration;
 
     private void Awake() {
         currentHealth = startingHealth;
