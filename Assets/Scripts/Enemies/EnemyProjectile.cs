@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyProjectile : Enemy // Inhertance TakeDame on player method - OnTriggerEnter2D //
+public class EnemyProjectile : EnemyDamage // Inhertance TakeDame on player method - OnTriggerEnter2D //>
 {
     [SerializeField] private float speed;
     [SerializeField] private float resetTime;
@@ -27,7 +27,10 @@ public class EnemyProjectile : Enemy // Inhertance TakeDame on player method - O
 
     private void OnTriggerEnter2D(Collider2D colTri) 
     {
-        base.OnTriggerEnter2D(colTri);
-        gameObject.SetActive(false);
+        if(colTri.CompareTag("Player"))
+        {
+            colTri.GetComponent<Health>().TakeDame(damage);
+            gameObject.SetActive(false);
+        }
     }
 }

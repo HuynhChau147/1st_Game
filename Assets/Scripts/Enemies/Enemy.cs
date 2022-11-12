@@ -6,22 +6,18 @@ public class Enemy : MonoBehaviour
 {
     public int maxHealth = 3;
     private int currentHealth;
-    public Rigidbody2D m_player;
-    public Rigidbody2D m_Enemy;
     public GameObject enemy;
+    public Rigidbody2D m_enemy;
     public float flashTime;
     Color origionalColor;
     public SpriteRenderer spriteRender;
-
-    [SerializeField] protected float damage;
+    private bool isTookDame;
 
     // Start is called before the first frame update
     void Start()
     {
         origionalColor = spriteRender.color;
         currentHealth = maxHealth;
-        m_player = GetComponent<Rigidbody2D>();
-        m_Enemy = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -41,13 +37,13 @@ public class Enemy : MonoBehaviour
 
         if(currentHealth > 0)
         {
+            isTookDame = true;
             Flash();
         }
 
         if(currentHealth <= 0 )
         {
-            Debug.Log(m_Enemy.name + " dead");
-            // enGetComponent<FrogMovement>().enabled = false;
+            Debug.Log(enemy.name + " dead");
             enemy.GetComponent<Animator>().SetTrigger("Dead");
             Destroy(enemy,0.5f);
         }
@@ -62,12 +58,11 @@ public class Enemy : MonoBehaviour
     void ResetColor()
     {
         spriteRender.color = origionalColor;
+        isTookDame = false;
     }
 
-    protected void OnTriggerEnter2D(Collider2D colTri) {
-        if(colTri.tag == "Player")
-        {
-            colTri.GetComponent<Health>().TakeDame(damage);
-        }
+    public bool getIsTookDame()
+    {
+        return isTookDame;
     }
 }

@@ -186,6 +186,9 @@ MonoBehaviour:
   components:
   - {fileID: 1317068873212042936}
   startingHealth: 3
+  audioSource: {fileID: 0}
+  DeadSound: {fileID: 8300000, guid: d53048cbeb85f394b86fd3c38967d73d, type: 3}
+  iFrameDuration: 0
 --- !u!114 &9091149140469257504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +224,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
   checkpointSound: {fileID: 8300000, guid: fdd369804e05df2498831124515ab6df, type: 3}
-  DeadSound: {fileID: 8300000, guid: d53048cbeb85f394b86fd3c38967d73d, type: 3}
 --- !u!70 &5984308793082765917
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 525689444}
   - component: {fileID: 1592972737}
   - component: {fileID: 1259405276916338818}
+  - component: {fileID: 8726100415021902385}
   m_Layer: 9
   m_Name: Frog
   m_TagString: Enemy
@@ -196,9 +197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
-  m_player: {fileID: 0}
-  m_Enemy: {fileID: 1259405277784784310}
   enemy: {fileID: 1259405277784784308}
+  m_enemy: {fileID: 1259405277784784310}
   flashTime: 0.2
   spriteRender: {fileID: 1259405277784784296}
 --- !u!61 &1259405276916338818
@@ -227,3 +227,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25674742, y: 0.19122452}
   m_EdgeRadius: 0
+--- !u!114 &8726100415021902385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259405277784784308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 774ba2b3ceb67c74293714534c3271d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  m_player: {fileID: 0}

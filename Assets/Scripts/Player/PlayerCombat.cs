@@ -14,6 +14,10 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] public AudioSource audioSrc;
     [SerializeField] public AudioClip AttackSound;
 
+    // private void Start() {
+    //     // Physics2D.IgnoreLayerCollision(3,11,true);
+    // }
+
     // Update is called once per frame
     void Update()
     {

@@ -50,8 +50,6 @@ public class FrogMovement : MonoBehaviour
         else currentCooldown -= Time.deltaTime; // Reduce cooldown over time
 
         mustTurn = !Physics2D.OverlapCircle(groundCheckPos.position, groundCheckRadius, groundCheckLayer);
-        Debug.Log(mustTurn); 
-        Debug.Log(dir);
     }
 
     private void OnCollisionEnter2D(Collision2D col) {
@@ -62,21 +60,6 @@ public class FrogMovement : MonoBehaviour
                 animator.SetBool("Is Jump",false);
         }
 
-        if(col.collider.tag == "Player" )
-        {
-            m_player.GetComponent<Health>().TakeDame(dame); 
-            m_player.GetComponent<PlayerMovement>().Player_Invincible();
-            m_player.GetComponent<PlayerMovement>().KBCounter = m_player.GetComponent<PlayerMovement>().KBTotalTime;
-            if(col.transform.position.x <= transform.position.x)
-            {
-                m_player.GetComponent<PlayerMovement>().KnockFromRight = true;
-            }
-            if(col.transform.position.x > transform.position.x)
-            {
-                m_player.GetComponent<PlayerMovement>().KnockFromRight = false;
-            }
-            Debug.Log("Took Dame");
-        }
     }
 
     private void Jumping(){
