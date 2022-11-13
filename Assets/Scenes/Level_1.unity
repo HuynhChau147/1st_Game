@@ -171,9 +171,88 @@ Transform:
   m_Children:
   - {fileID: 9091149140469257502}
   - {fileID: 2047399430732402776}
+  - {fileID: 489048696}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &244131063
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 215232997}
+    m_Modifications:
+    - target: {fileID: 2047399431530944936, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047399431530944936, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 184.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047399431530944936, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 16.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047399431530944936, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047399431530944936, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047399431530944936, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047399431530944936, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047399431530944936, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047399431530944936, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047399431530944936, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047399431530944936, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047399431530944937, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
+      propertyPath: m_SortingLayer
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047399431530944937, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1330334341
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047399431530944939, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
+      propertyPath: m_Name
+      value: HealthCollectible (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047399431530945111, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
+      propertyPath: audioSrc
+      value: 
+      objectReference: {fileID: 2007179243}
+    - target: {fileID: 2047399431530945111, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 9091149140469257511}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
+--- !u!4 &489048696 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2047399431530944936, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
+  m_PrefabInstance: {fileID: 244131063}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &586919083
 GameObject:
   m_ObjectHideFlags: 1
@@ -315,11 +394,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2612859731835700816, guid: 426c1102ee91f7b4f916571fa503784e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 195.28
+      value: 189.22
       objectReference: {fileID: 0}
     - target: {fileID: 2612859731835700816, guid: 426c1102ee91f7b4f916571fa503784e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.54
+      value: 14.38
       objectReference: {fileID: 0}
     - target: {fileID: 2612859731835700816, guid: 426c1102ee91f7b4f916571fa503784e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -359,6 +438,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2612859731835700819, guid: 426c1102ee91f7b4f916571fa503784e, type: 3}
       propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2612859731835700819, guid: 426c1102ee91f7b4f916571fa503784e, type: 3}
+      propertyPath: movementDistance
       value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1178,14 +1261,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Saw
       objectReference: {fileID: 0}
-    - target: {fileID: 2612859731835700819, guid: 426c1102ee91f7b4f916571fa503784e, type: 3}
-      propertyPath: speed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2612859731835700819, guid: 426c1102ee91f7b4f916571fa503784e, type: 3}
-      propertyPath: movementDistance
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 5032950192836034914, guid: 426c1102ee91f7b4f916571fa503784e, type: 3}
       propertyPath: m_player
       value: 
@@ -1624,11 +1699,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9091149140642501456, guid: c9e3193d8b5244242b5c0f8e96ec9598, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 185.54
+      value: 170.65
       objectReference: {fileID: 0}
     - target: {fileID: 9091149140642501456, guid: c9e3193d8b5244242b5c0f8e96ec9598, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.25
+      value: 16.99
       objectReference: {fileID: 0}
     - target: {fileID: 9091149140642501456, guid: c9e3193d8b5244242b5c0f8e96ec9598, type: 3}
       propertyPath: m_LocalPosition.z

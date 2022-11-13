@@ -21,7 +21,7 @@ TagManager:
   - Enemies
   - Objects
   - Zone
-  - 
+  - Trap
   - 
   - 
   - 
@@ -47,6 +47,9 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 1337562789
+    locked: 0
+  - name: Trap
+    uniqueID: 2566544253
     locked: 0
   - name: Floor
     uniqueID: 2658061517

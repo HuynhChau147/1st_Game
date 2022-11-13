@@ -19,7 +19,6 @@ public class EnemyDamage : MonoBehaviour
         if(col.collider.tag == "Player" )
         {
             m_player.GetComponent<Health>().TakeDame(damage); 
-            m_player.GetComponent<PlayerMovement>().Player_Invincible();
             m_player.GetComponent<PlayerMovement>().KBCounter = m_player.GetComponent<PlayerMovement>().KBTotalTime;
             if(col.transform.position.x <= transform.position.x)
             {

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+
     public float currentHealth{ get; private set; }
     private Animator anim;
     private bool dead;
@@ -12,7 +13,7 @@ public class Health : MonoBehaviour
     [SerializeField] private float startingHealth;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip DeadSound;
-    [SerializeField] private float iFrameDuration;
+    [SerializeField] private float iFramesDuration = 0.3f;
 
     private void Awake() {
         currentHealth = startingHealth;
@@ -26,6 +27,7 @@ public class Health : MonoBehaviour
             // Take dame
             anim.SetBool("Is Jump",false);
             anim.SetTrigger("hurt");
+            StartCoroutine(Invunerability());
         }
 
         else{
@@ -60,5 +62,13 @@ public class Health : MonoBehaviour
         {
             component.enabled = true;
         }
+    }
+
+    private IEnumerator Invunerability()
+    {
+        yield return new WaitForSeconds(iFramesDuration);
+        Physics2D.IgnoreLayerCollision(3,12, true);
+        yield return new WaitForSeconds(iFramesDuration);
+        Physics2D.IgnoreLayerCollision(3,12, false);
     }
 }

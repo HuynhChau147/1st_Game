@@ -22,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     private bool canDash = true;
     private bool isDashing;
     private bool isOnSlope;
-    private bool invincible = false;
     public bool KnockFromRight;
     public float KBFroce;
     public float KBCounter;
@@ -226,20 +225,6 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
         Debug.Log(m_player.transform.localPosition.x);
-    }
-
-    public void Player_Invincible()
-    {
-        if (!invincible)
-        {
-            invincible = true;
-            Invoke("resetInvulnerability", 3);
-        }
-    }
-
-    private void resetInvulnerability()
-    {
-        invincible = false;
     }
 
     public bool getJumping()
