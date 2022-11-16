@@ -71,4 +71,9 @@ public class Health : MonoBehaviour
         yield return new WaitForSeconds(iFramesDuration);
         Physics2D.IgnoreLayerCollision(3,12, false);
     }
+
+    public bool getDeadState()
+    {
+        return dead;
+    }
 }

@@ -226,14 +226,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2047399431530944937, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
-      propertyPath: m_SortingLayer
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2047399431530944937, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1330334341
-      objectReference: {fileID: 0}
     - target: {fileID: 2047399431530944939, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
       propertyPath: m_Name
       value: HealthCollectible (1)
@@ -1179,14 +1171,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2047399431530944937, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
-      propertyPath: m_SortingLayer
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2047399431530944937, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1330334341
-      objectReference: {fileID: 0}
     - target: {fileID: 2047399431530944939, guid: 866874d344e9aec4eb956a728b5d888d, type: 3}
       propertyPath: m_Name
       value: HealthCollectible
@@ -1699,11 +1683,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9091149140642501456, guid: c9e3193d8b5244242b5c0f8e96ec9598, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 170.65
+      value: 77.07
       objectReference: {fileID: 0}
     - target: {fileID: 9091149140642501456, guid: c9e3193d8b5244242b5c0f8e96ec9598, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.99
+      value: 3.16
       objectReference: {fileID: 0}
     - target: {fileID: 9091149140642501456, guid: c9e3193d8b5244242b5c0f8e96ec9598, type: 3}
       propertyPath: m_LocalPosition.z
