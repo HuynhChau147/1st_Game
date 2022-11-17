@@ -6,21 +6,34 @@ public class Player_Respawn : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip checkpointSound;
+    [SerializeField] private Transform startingPoint;
     private Transform currentCheckpoint;
     private Health playerHealth;
     private UIManager uIManager;
+    private int currentLife;
 
     private void Awake() {
         playerHealth = GetComponent<Health>();
         uIManager = FindObjectOfType<UIManager>();
     }
 
+    private void Update() {
+        currentLife = GetComponent<LifeManager>().getLifeCounter();
+    }
+
     public void CheckRespawn()
     {   
-        if(currentCheckpoint == null)
+        if(currentLife == 0)
         {
             audioSource.Stop();
             uIManager.GameOver();
+            return;
+        }
+
+        if(currentCheckpoint == null && currentLife > 0 )
+        {
+            playerHealth.Respawn();
+            transform.position = startingPoint.position;
             return;
         }
 

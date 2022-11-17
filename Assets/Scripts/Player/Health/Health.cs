@@ -36,6 +36,7 @@ public class Health : MonoBehaviour
             {
                 anim.SetBool("Is Jump",false);
                 anim.SetTrigger("die");
+                GetComponent<LifeManager>().LostLife();
                 GetComponent<PlayerMovement>().enabled = false;
                 GetComponent<CapsuleCollider2D>().enabled = false;
                 m_player.gravityScale = 0;
