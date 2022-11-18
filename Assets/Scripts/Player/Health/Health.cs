@@ -77,4 +77,21 @@ public class Health : MonoBehaviour
     {
         return dead;
     }
+
+    public void setDeadState(bool State)
+    {
+        this.dead = State;
+    }
+
+    public void Dead()
+    {
+        anim.SetBool("Is Jump",false);
+        anim.SetTrigger("die");
+        GetComponent<LifeManager>().LostLife();
+        GetComponent<PlayerMovement>().enabled = false;
+        GetComponent<CapsuleCollider2D>().enabled = false;
+        m_player.gravityScale = 0;
+        dead = true;
+        audioSource.PlayOneShot(DeadSound);
+    }
 }

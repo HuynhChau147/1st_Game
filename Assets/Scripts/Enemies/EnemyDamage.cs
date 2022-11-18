@@ -6,6 +6,7 @@ public class EnemyDamage : MonoBehaviour
 {
     [SerializeField] protected float damage;
     [SerializeField] private Rigidbody2D m_player;
+    private int takeScoreValue = 10;
 
     protected void OnTriggerEnter2D(Collider2D colTri) 
     {
@@ -19,6 +20,7 @@ public class EnemyDamage : MonoBehaviour
         if(col.collider.tag == "Player" )
         {
             m_player.GetComponent<Health>().TakeDame(damage); 
+            m_player.GetComponent<Player_Score>().TakeScore(takeScoreValue);
             m_player.GetComponent<PlayerMovement>().KBCounter = m_player.GetComponent<PlayerMovement>().KBTotalTime;
             if(col.transform.position.x <= transform.position.x)
             {

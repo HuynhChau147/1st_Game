@@ -201,6 +201,7 @@ MonoBehaviour:
   m_enemy: {fileID: 1259405277784784310}
   flashTime: 0.2
   spriteRender: {fileID: 1259405277784784296}
+  m_player: {fileID: 0}
 --- !u!61 &1259405276916338818
 BoxCollider2D:
   m_ObjectHideFlags: 0

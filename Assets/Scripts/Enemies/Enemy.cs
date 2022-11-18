@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     Color origionalColor;
     public SpriteRenderer spriteRender;
     private bool isTookDame;
+    private int addScoreValue = 20;
+    [SerializeField] private Rigidbody2D m_player;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +47,8 @@ public class Enemy : MonoBehaviour
         {
             Debug.Log(enemy.name + " dead");
             enemy.GetComponent<Animator>().SetTrigger("Dead");
-            Destroy(enemy,0.5f);
+            Destroy(enemy,0.2f);
+            m_player.GetComponent<Player_Score>().AddScore(addScoreValue);
         }
     }
 

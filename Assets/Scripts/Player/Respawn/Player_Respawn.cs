@@ -7,6 +7,7 @@ public class Player_Respawn : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip checkpointSound;
     [SerializeField] private Transform startingPoint;
+    [SerializeField] private ZoneDetacting DeadZone;
     private Transform currentCheckpoint;
     private Health playerHealth;
     private UIManager uIManager;
@@ -19,6 +20,10 @@ public class Player_Respawn : MonoBehaviour
 
     private void Update() {
         currentLife = GetComponent<LifeManager>().getLifeCounter();
+        if(DeadZone.getAttackStatus())
+        {
+            playerHealth.Dead();
+        }
     }
 
     public void CheckRespawn()
@@ -30,7 +35,7 @@ public class Player_Respawn : MonoBehaviour
             return;
         }
 
-        if(currentCheckpoint == null && currentLife > 0 )
+        if(currentCheckpoint == null && currentLife > 0)
         {
             playerHealth.Respawn();
             transform.position = startingPoint.position;

@@ -36,6 +36,7 @@ public class PlayerCombat : MonoBehaviour
         anim.SetTrigger("Attack");
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         audioSrc.PlayOneShot(AttackSound);
+        
 
         foreach(Collider2D enemy in hitEnemies)
         {
