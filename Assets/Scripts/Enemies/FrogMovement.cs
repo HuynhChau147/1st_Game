@@ -10,7 +10,6 @@ public class FrogMovement : MonoBehaviour
     private float dir = 1;
     private bool m_FacingRight = true;
     private Health player_Health;
-    private float dame = 1;
     public float jumpCooldown = 1;
     private float currentCooldown;
     public BoxCollider2D col2D;

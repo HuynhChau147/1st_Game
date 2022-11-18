@@ -14,6 +14,11 @@ public class Player_Score : MonoBehaviour
 
     public void TakeScore(int takevalue)
     {
+        if(currentScore <= 0)
+        {
+            return;
+        }
+        
         currentScore -= takevalue;
     }
 

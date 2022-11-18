@@ -78,11 +78,6 @@ public class Health : MonoBehaviour
         return dead;
     }
 
-    public void setDeadState(bool State)
-    {
-        this.dead = State;
-    }
-
     public void Dead()
     {
         anim.SetBool("Is Jump",false);
