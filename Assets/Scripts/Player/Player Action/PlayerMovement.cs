@@ -17,11 +17,11 @@ public class PlayerMovement : MonoBehaviour
 
     private bool Dashing = false;
     private bool Jumping = false;
+    private bool Landing;
     private bool m_FacingRight = true;
     private bool OnGround;
     private bool canDash = true;
     private bool isDashing;
-    private bool isOnSlope;
     public bool KnockFromRight;
     public float KBFroce;
     public float KBCounter;
@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
             }
             KBCounter -= Time.deltaTime;
         }
-        if (Jumping == true)
+        if (Jumping == true && Landing == false)
         {
             Debug.Log("Jump");
             Jump();
@@ -112,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("Is Jump", true);
         //  Debug.Log(verticalMove*JumpForce);
         OnGround = false;
-        Jumping = false;
+        Landing = true;
         if (audioSrc && jumpSound)
         {
             audioSrc.PlayOneShot(jumpSound);
@@ -139,7 +139,10 @@ public class PlayerMovement : MonoBehaviour
         if (col.collider.tag == "Ground")
         {
             OnGround = true;
+            Jumping = false;
+            Landing = false;
             animator.SetBool("Is Jump", false);
+            animator.SetBool("Jump Attack", false);
             Debug.Log("On Ground");
         }
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int maxHealth = 3;
-    private int currentHealth;
+    
     public GameObject enemy;
     public Rigidbody2D m_enemy;
     public float flashTime;
@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     public SpriteRenderer spriteRender;
     private bool isTookDame;
     private int addScoreValue = 20;
+    [SerializeField] private int currentHealth;
     [SerializeField] private Rigidbody2D m_player;
 
     // Start is called before the first frame update
@@ -47,7 +48,7 @@ public class Enemy : MonoBehaviour
         {
             Debug.Log(enemy.name + " dead");
             enemy.GetComponent<Animator>().SetTrigger("Dead");
-            Destroy(enemy,0.2f);
+            Destroy(enemy,0.5f);
             m_player.GetComponent<Player_Score>().AddScore(addScoreValue);
         }
     }
@@ -67,5 +68,10 @@ public class Enemy : MonoBehaviour
     public bool getIsTookDame()
     {
         return isTookDame;
+    }
+
+    public int getCurrentHealth()
+    {
+        return currentHealth;
     }
 }

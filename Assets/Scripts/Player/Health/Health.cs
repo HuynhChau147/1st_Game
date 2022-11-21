@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
     public float currentHealth{ get; private set; }
     private Animator anim;
     private bool dead;
+    private bool isHurt;
     public Rigidbody2D m_player;
     [SerializeField] private Behaviour[] components;
     [SerializeField] private float startingHealth;
@@ -25,6 +26,7 @@ public class Health : MonoBehaviour
 
         if(currentHealth > 0){
             // Take dame
+            isHurt = true;
             anim.SetBool("Is Jump",false);
             anim.SetTrigger("hurt");
             StartCoroutine(Invunerability());
@@ -37,9 +39,9 @@ public class Health : MonoBehaviour
                 anim.SetBool("Is Jump",false);
                 anim.SetTrigger("die");
                 GetComponent<LifeManager>().LostLife();
+                m_player.gravityScale = 0;
                 GetComponent<PlayerMovement>().enabled = false;
                 GetComponent<CapsuleCollider2D>().enabled = false;
-                m_player.gravityScale = 0;
                 dead = true;
                 audioSource.PlayOneShot(DeadSound);
             }
@@ -71,11 +73,17 @@ public class Health : MonoBehaviour
         Physics2D.IgnoreLayerCollision(3,12, true);
         yield return new WaitForSeconds(iFramesDuration);
         Physics2D.IgnoreLayerCollision(3,12, false);
+        isHurt = false;
     }
 
     public bool getDeadState()
     {
         return dead;
+    }
+
+    public bool getHutState()
+    {
+        return isHurt;
     }
 
     public void Dead()

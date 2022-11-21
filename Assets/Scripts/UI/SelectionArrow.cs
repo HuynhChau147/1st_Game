@@ -61,7 +61,10 @@ public class SelectionArrow : MonoBehaviour
 
     private void Interact()
     {
-
+        if(options[currentPosition] == null)
+        {
+            return;
+        }
         // Access the button component on each option and call it's function
         options[currentPosition].GetComponent<Button>().onClick.Invoke();
     }
