@@ -338,12 +338,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 8482656528680523033}
     m_Modifications:
     - target: {fileID: 2326308777154492689, guid: 8879d44786655c5429a016d9923af889, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 860.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326308777154492689, guid: 8879d44786655c5429a016d9923af889, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 103.1043
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326308777154492689, guid: 8879d44786655c5429a016d9923af889, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 307
+      value: 2.6612
       objectReference: {fileID: 0}
     - target: {fileID: 2326308777154492689, guid: 8879d44786655c5429a016d9923af889, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -27
+      value: -124.8284
       objectReference: {fileID: 0}
     - target: {fileID: 3584601005292156989, guid: 8879d44786655c5429a016d9923af889, type: 3}
       propertyPath: m_Pivot.x
@@ -443,19 +451,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6896748599348790292, guid: 8879d44786655c5429a016d9923af889, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 8
+      value: 2.6613
       objectReference: {fileID: 0}
     - target: {fileID: 6896748599348790292, guid: 8879d44786655c5429a016d9923af889, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -75
+      value: -62.789
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305943606328042124, guid: 8879d44786655c5429a016d9923af889, type: 3}
+      propertyPath: m_margin.w
+      value: 101.251076
       objectReference: {fileID: 0}
     - target: {fileID: 7305943606328042124, guid: 8879d44786655c5429a016d9923af889, type: 3}
       propertyPath: m_margin.y
-      value: 235.4784
+      value: 105.96902
       objectReference: {fileID: 0}
     - target: {fileID: 7305943606328042124, guid: 8879d44786655c5429a016d9923af889, type: 3}
       propertyPath: m_margin.z
-      value: 604.87036
+      value: -0.5470123
       objectReference: {fileID: 0}
     - target: {fileID: 7687298434645639011, guid: 8879d44786655c5429a016d9923af889, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -563,11 +575,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5427936678363405810, guid: 40c80a5c14d4a3149b10f7902ab2163e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -171
+      value: -173
       objectReference: {fileID: 0}
     - target: {fileID: 5427936678363405810, guid: 40c80a5c14d4a3149b10f7902ab2163e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -76.3
+      value: -62.789
       objectReference: {fileID: 0}
     - target: {fileID: 5427936678363405810, guid: 40c80a5c14d4a3149b10f7902ab2163e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

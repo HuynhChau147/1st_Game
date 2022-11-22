@@ -13,10 +13,18 @@ public class LifeManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        currentLife = startingLife;
+        if(PlayerPrefs.GetInt("currentLife") == 0)
+        {
+            currentLife = startingLife;
+            return;
+        }
+        currentLife = PlayerPrefs.GetInt("currentLife");
     }
 
     // Update is called once per frame
+    private void Update() {
+        PlayerPrefs.SetInt("currentLife",currentLife);
+    }
 
     public void LostLife()
     {
@@ -26,5 +34,11 @@ public class LifeManager : MonoBehaviour
     public int getLifeCounter()
     {
         return currentLife;
+    }
+
+    public void LifeReset()
+    {
+        PlayerPrefs.DeleteKey("currentLife");
+        currentLife = 0;
     }
 }

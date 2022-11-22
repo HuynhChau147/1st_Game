@@ -7,21 +7,15 @@ public class PlayerMovement : MonoBehaviour
     // Attribute of player
     private float horizontalMove;
     private float verticalMove;
-    private float dashingTime = 0.5f;
-    private float dashingCooldown = 2f;
     private float slopeDownAngle;
     private float slopeDownAngleOld;
     private float slopeSideAngle;
     private float MoveSpeed = 12f;
     private float SlopeAngle;
-
-    private bool Dashing = false;
     private bool Jumping = false;
     private bool Landing;
     private bool m_FacingRight = true;
     private bool OnGround;
-    private bool canDash = true;
-    private bool isDashing;
     public bool KnockFromRight;
     public float KBFroce;
     public float KBCounter;
@@ -38,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public AudioClip jumpSound;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private float JumpForce;
-    [SerializeField] private float dashingPower = 12f;
     [SerializeField] public Animator animator;
 
     Rigidbody2D m_player;
@@ -65,20 +58,12 @@ public class PlayerMovement : MonoBehaviour
         {
             Jumping = true;
         }
-        if (Input.GetKeyDown(KeyCode.Z) && canDash)
-        {
-            Dashing = true;
-        }
     }
 
     //Animation State
 
     private void FixedUpdate()
     {
-        if (isDashing)
-        {
-            return;
-        }
         if (KBCounter <= 0)
         {
             Move();
@@ -99,10 +84,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Jump");
             Jump();
-        }
-        if (Dashing == true && canDash)
-        {
-            StartCoroutine(Dash());
         }
     }
 
@@ -154,25 +135,6 @@ public class PlayerMovement : MonoBehaviour
         Vector3 theScale = this.transform.localScale;
         theScale.x *= -1;
         this.transform.localScale = theScale;
-    }
-
-    private IEnumerator Dash()
-    {
-        canDash = false;
-        isDashing = true;
-        float originalGravity = m_player.gravityScale;
-        m_player.gravityScale = 0f;
-        m_player.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
-        animator.SetBool("Is Dash", isDashing);
-        yield return new WaitForSeconds(dashingTime);
-        m_player.velocity = new Vector2(0f, 0f);
-        m_player.gravityScale = originalGravity;
-        isDashing = false;
-        Dashing = false;
-        animator.SetBool("Is Dash", isDashing);
-        yield return new WaitForSeconds(dashingCooldown);
-        canDash = true;
-        Debug.Log(m_player.transform.localPosition.x);
     }
 
     public bool getJumping()

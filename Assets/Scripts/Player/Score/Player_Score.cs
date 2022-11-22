@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class Player_Score : MonoBehaviour
 {
-    private long currentScore = 0;
+    private int currentScore = 0;
     private int currentGems = 0;
+
+    private void Awake() {
+        currentGems = PlayerPrefs.GetInt("currentGems");
+        currentScore = PlayerPrefs.GetInt("currentScore");
+    }
+
+    private void Update() {
+        PlayerPrefs.SetInt("currentGems", currentGems);
+        PlayerPrefs.SetInt("currentScore", currentScore);
+    }
 
     public void AddScore(int addvalue)
     {
@@ -27,7 +37,7 @@ public class Player_Score : MonoBehaviour
         currentGems += GemCount;
     }
 
-    public long getScore()
+    public int getScore()
     {
         return currentScore;
     }
@@ -35,5 +45,13 @@ public class Player_Score : MonoBehaviour
     public int getGemCounter()
     {
         return currentGems;
+    }
+
+    public void ResetScore()
+    {
+        PlayerPrefs.DeleteKey("currentGems");
+        PlayerPrefs.DeleteKey("currentScore");
+        currentGems = 0;
+        currentScore = 0;
     }
 }

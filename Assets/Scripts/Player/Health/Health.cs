@@ -28,6 +28,7 @@ public class Health : MonoBehaviour
             // Take dame
             isHurt = true;
             anim.SetBool("Is Jump",false);
+            anim.SetFloat("Move Speed",0);
             anim.SetTrigger("hurt");
             StartCoroutine(Invunerability());
         }
@@ -37,6 +38,7 @@ public class Health : MonoBehaviour
             if(!dead)
             {
                 anim.SetBool("Is Jump",false);
+                anim.SetFloat("Move Speed",0);
                 anim.SetTrigger("die");
                 GetComponent<LifeManager>().LostLife();
                 m_player.gravityScale = 0;
@@ -71,9 +73,9 @@ public class Health : MonoBehaviour
     {
         yield return new WaitForSeconds(iFramesDuration);
         Physics2D.IgnoreLayerCollision(3,12, true);
+        isHurt = false;
         yield return new WaitForSeconds(iFramesDuration);
         Physics2D.IgnoreLayerCollision(3,12, false);
-        isHurt = false;
     }
 
     public bool getDeadState()
@@ -81,7 +83,7 @@ public class Health : MonoBehaviour
         return dead;
     }
 
-    public bool getHutState()
+    public bool getHurtState()
     {
         return isHurt;
     }

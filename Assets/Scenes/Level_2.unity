@@ -2190,6 +2190,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2971090770767902357, guid: 775a6fb036b57a94c8d273db05a26c39, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 150408e77823a194995aadce2f53ce70, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 775a6fb036b57a94c8d273db05a26c39, type: 3}
 --- !u!82 &1314785736 stripped
@@ -2559,6 +2563,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2135620913}
     m_Modifications:
+    - target: {fileID: 113539841, guid: da3127a7f5081944d8be2bacf9c28a9b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 790327218, guid: da3127a7f5081944d8be2bacf9c28a9b, type: 3}
       propertyPath: life
       value: 
@@ -2575,6 +2583,10 @@ PrefabInstance:
       propertyPath: audioSrc
       value: 
       objectReference: {fileID: 1314785736}
+    - target: {fileID: 5799810271363775170, guid: da3127a7f5081944d8be2bacf9c28a9b, type: 3}
+      propertyPath: player_Life
+      value: 
+      objectReference: {fileID: 9091149139108891014}
     - target: {fileID: 5799810271363775170, guid: da3127a7f5081944d8be2bacf9c28a9b, type: 3}
       propertyPath: player_Score
       value: 
@@ -3564,7 +3576,7 @@ PrefabInstance:
       objectReference: {fileID: 1314785736}
     - target: {fileID: 2614605857451953747, guid: c9e3193d8b5244242b5c0f8e96ec9598, type: 3}
       propertyPath: startingLife
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9091149140469257503, guid: c9e3193d8b5244242b5c0f8e96ec9598, type: 3}
       propertyPath: audioSource
@@ -3592,11 +3604,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9091149140642501456, guid: c9e3193d8b5244242b5c0f8e96ec9598, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 135.15
+      value: -7.77
       objectReference: {fileID: 0}
     - target: {fileID: 9091149140642501456, guid: c9e3193d8b5244242b5c0f8e96ec9598, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.73
+      value: 3.68
       objectReference: {fileID: 0}
     - target: {fileID: 9091149140642501456, guid: c9e3193d8b5244242b5c0f8e96ec9598, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3947,23 +3959,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7266450716200295873, guid: 1cd2db2af88392f4b88565d5073604f1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7266450716200295874, guid: 1cd2db2af88392f4b88565d5073604f1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 09033bdd632050d43af249f09f720fc9, type: 3}
+    - target: {fileID: 7266450716200295874, guid: 1cd2db2af88392f4b88565d5073604f1, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7266450716200295875, guid: 1cd2db2af88392f4b88565d5073604f1, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7266450716200295875, guid: 1cd2db2af88392f4b88565d5073604f1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 27.3425
+      objectReference: {fileID: 0}
+    - target: {fileID: 7266450716200295875, guid: 1cd2db2af88392f4b88565d5073604f1, type: 3}
       propertyPath: m_LocalScale.y
-      value: 8.202799
+      value: 25.55555
       objectReference: {fileID: 0}
     - target: {fileID: 7266450716200295875, guid: 1cd2db2af88392f4b88565d5073604f1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 107.8449
+      value: 108.456
       objectReference: {fileID: 0}
     - target: {fileID: 7266450716200295875, guid: 1cd2db2af88392f4b88565d5073604f1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 26.0757
+      value: 3.3173
       objectReference: {fileID: 0}
     - target: {fileID: 7266450716200295875, guid: 1cd2db2af88392f4b88565d5073604f1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4017,7 +4041,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 506456504533369411, guid: e955ea7bbfbb16f4aac7804ed3481817, type: 3}
       propertyPath: orthographic size
-      value: 6.923918
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 506456504533369532, guid: e955ea7bbfbb16f4aac7804ed3481817, type: 3}
       propertyPath: m_RootOrder

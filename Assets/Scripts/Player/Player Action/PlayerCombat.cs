@@ -53,7 +53,7 @@ public class PlayerCombat : MonoBehaviour
     private void Attack()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-        if(this.GetComponent<Health>().getHutState())
+        if(this.GetComponent<Health>().getHurtState())
         {
             return;
         }
