@@ -30,7 +30,7 @@ public class SelectionArrow : MonoBehaviour
         }
 
         // Input to interact with selection
-        if(Input.GetKeyDown(KeyCode.KeypadEnter))
+        if(Input.GetKeyDown(KeyCode.Return))
         {
             audioSrc.PlayOneShot(selectedSound);
             Interact();
