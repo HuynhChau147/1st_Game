@@ -25,8 +25,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 tempVelocity;
     private CapsuleCollider2D CapCol2D;
     private Vector2 slopeNormalPerp;
+    BoxCollider2D myFeet;
     
-
     // Private SerializeField to custom on Unity Editor
     [SerializeField] public AudioSource audioSrc;
     [SerializeField] public AudioClip jumpSound;
@@ -40,11 +40,11 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        myFeet = GetComponent<BoxCollider2D>();
         m_player = GetComponent<Rigidbody2D>();
         CapCol2D = GetComponent<CapsuleCollider2D>();
         colliderSize = CapCol2D.size;
         animator = GetComponent<Animator>();
-        // this.GetComponent<SpriteRenderer>().sprite = mySprite;
         animator.SetBool("Is Jump", false);
     }
 
@@ -117,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.collider.tag == "Ground")
+        if (myFeet.IsTouchingLayers(LayerMask.GetMask("Floor")))
         {
             OnGround = true;
             Jumping = false;

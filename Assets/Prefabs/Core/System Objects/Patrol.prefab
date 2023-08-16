@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6655100441258741618}
   - component: {fileID: 6655100441258741622}
   - component: {fileID: 6655100441258741623}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Patrol
   m_TagString: Ground
   m_Icon: {fileID: 0}
